@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+
+    <header>
+        <h1>Task Manager</h1>
+        <button id="theme-toggle">Theme</button>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Create a Task</h2>
+            <form id="task-form">
+                <input type="text" id="task-title" placeholder="Enter task title..." required>
+                <select id="task-category">
+                    <option value="Work">Work</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Study">Study</option>
+                    <option value="Study">Collage</option>
+                </select>
+                <button type="submit" id="add-task-btn">Add Task</button>
+            </form>
+        </section>
+
+        <section class="controls-section">
+            <div class="stats">
+                <span>Pending: <strong id="pending-count">0</strong></span> | 
+                <span>Completed: <strong id="completed-count">0</strong></span>
+            </div>
+        </section>
+
+        <section class="task-section">
+            <h2>Tasks</h2>
+            <div id="task-container"></div>
+        </section>
+
+        <section class="propagation-section">
+            <h2>Event Propagation Demonstration</h2>
+            <p>Click the Child Button below to view Bubbling vs Capturing sequences in your browser console.</p>
+            <div id="grandparent" class="prop-box">
+                Grandparent (Capture/Bubble Zone)
+                <div id="parent" class="prop-box">
+                    Parent Zone
+                    <button id="child-btn">Child Button</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="pipeline-section">
+            <h2>Browser Rendering Pipeline</h2>
+            <div class="pipeline-flow">
+                <div class="flow-card html-branch">
+                    <h3>HTML</h3>
+                    <p>Raw bytes received from server.</p>
+                    <div class="arrow">↓</div>
+                    <h3>Tokenization</h3>
+                    <p>Splitting text into distinct standard tokens (&lt;tag&gt;, text).</p>
+                    <div class="arrow">↓</div>
+                    <h3>Parsing</h3>
+                    <p>Constructing parent-child relationships from tokens.</p>
+                    <div class="arrow">↓</div>
+                    <div class="tree-box">DOM Tree</div>
+                </div>
+
+                <div class="flow-connector">+</div>
+
+                <div class="flow-card css-branch">
+                    <h3>CSS</h3>
+                    <p>Styles extracted from stylesheets and style tags.</p>
+                    <div class="arrow">↓</div>
+                    <div class="tree-box">CSSOM Tree</div>
+                </div>
+
+                <div class="flow-connector">=</div>
+
+                <div class="flow-card render-branch">
+                    <h3>Render Tree</h3>
+                    <p>Combination of DOM and CSSOM trees. Contains only visible elements needed to paint layout screens.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
